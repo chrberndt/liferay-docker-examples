@@ -1,0 +1,31 @@
+version: "3.7"
+services:
+  jenkins:
+    build: ./jenkins
+    container_name: jenkins
+    environment:
+#
+# TODO: set initial password via environment variables
+#
+#      JAVA_OPTS: -Djenkins.install.runSetupWizard=false
+#      JENKINS_OPTS: --argumentsRealm.roles.user=admin --argumentsRealm.passwd.admin=admin --argumentsRealm.roles.admin=admin
+    networks:
+      - ci-cd 
+  #
+  # Note: In production systems, you wouldn't expose these ports publicly
+  #
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - jenkins_home:/var/jenkins_home
+  # 
+  # Requires respective permissions / user and group ids on the host system
+  #
+      - /var/run/docker.sock:/var/run/docker.sock
+networks:
+  ci-cd:
+    name: ci-cd 
+volumes:
+  jenkins_home:
+
