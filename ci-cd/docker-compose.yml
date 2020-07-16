@@ -20,6 +20,20 @@ services:
     # Requires respective permissions / user and group ids on the host system
     #
       - /var/run/docker.sock:/var/run/docker.sock
+  liferay-uat:
+    build: ./liferay
+    container_name: liferay-uat
+    networks:
+      - ci-cd
+    ports:
+      - 8080:8080
+  liferay-prod:
+    build: ./liferay
+    container_name: liferay-prod
+    networks:
+      - ci-cd
+    ports:
+      - 8081:8080
   nexus:
     build: ./nexus
     container_name: nexus
