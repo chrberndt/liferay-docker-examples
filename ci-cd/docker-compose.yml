@@ -3,29 +3,35 @@ services:
   jenkins:
     build: ./jenkins
     container_name: jenkins
+    #
+    # Change default port in order to avoid conflicts with Liferay test instance
+    #
     environment:
-#
-# TODO: set initial password via environment variables
-#
-#      JAVA_OPTS: -Djenkins.install.runSetupWizard=false
-#      JENKINS_OPTS: --argumentsRealm.roles.user=admin --argumentsRealm.passwd.admin=admin --argumentsRealm.roles.admin=admin
+      - JENKINS_OPTS="--httpPort=8079"
+    # TODO: set initial password via environment variables
     networks:
       - ci-cd 
-  #
-  # Note: In production systems, you wouldn't expose these ports publicly
-  #
     ports:
-      - 8080:8080
+      - 8079:8079
       - 50000:50000
     volumes:
       - jenkins_home:/var/jenkins_home
-  # 
-  # Requires respective permissions / user and group ids on the host system
-  #
+    #
+    # Requires respective permissions / user and group ids on the host system
+    #
       - /var/run/docker.sock:/var/run/docker.sock
+  nexus:
+    build: ./nexus
+    container_name: nexus
+    networks:
+      - ci-cd
+    ports:
+      - 8082:8081
+    volumes:
+      - nexus-data:/nexus-data
 networks:
   ci-cd:
     name: ci-cd 
 volumes:
   jenkins_home:
-
+  nexus-data:
