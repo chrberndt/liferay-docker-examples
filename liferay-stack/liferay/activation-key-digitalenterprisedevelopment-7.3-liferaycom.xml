@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<license>
+	<account-name>Liferay.com</account-name>
+	<owner>Liferay.com</owner>
+	<description>Liferay.com</description>
+	<product-name>DXP Development</product-name>
+	<product-version>7.3</product-version>
+	<license-name>Digital Enterprise Development</license-name>
+	<license-type>developer</license-type>
+	<license-version>6</license-version>
+	<start-date>Thursday, April 8, 2021 12:00:00 AM GMT</start-date>
+	<expiration-date>Friday, April 8, 2022 12:00:00 AM GMT</expiration-date>
+	<max-http-sessions>5</max-http-sessions>
+	<instance-size>sizing-1</instance-size>
+	<key>2b0108c9c86b1055b1b28373e8eef5a9b82dcabbf1394c2f6c50a32e394b98480eaa23483db7b05b595ed047fd8dfbc3edd0f86d9ead04469abd175cd270c4a838513a91e9ab7349446d734c66f166ee6a9f98ccc391ae556f27eafea3cab18aa78564ddbfd997181c056cb4f29760d7c509178992bf279f6e2a2751f8b4b9c021d5cd65</key>
+</license>

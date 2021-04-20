@@ -1,0 +1,79 @@
+version: "3.6"
+services:
+  elasticsearch:
+    build: ./elasticsearch
+    container_name: elastic-1
+    networks:
+      - network-liferay-stack
+    ports: 
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - discovery.type=single-node
+      - node.name=elastic-1
+    volumes:
+      - elasticsearch:/usr/share/elasticsearch/data
+  haproxy:
+    build: ./haproxy
+    container_name: haproxy
+    depends_on:
+      - liferay
+    networks:
+      - network-liferay-stack
+# Note: In this training, we're limiting ourselves to http and not https, due to the inherent difficulty to
+# operate with valid server certificates
+    ports:
+      - 80:80
+      - 9999:9999
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.9.3
+    container_name: kibana 
+    networks:
+      - network-liferay-stack
+    ports:
+      - 5601:5601 
+    environment:
+      ELASTICSEARCH_HOSTS: http://elastic-1:9200
+#      ELASTICSEARCH_HOSTS: http://elasticsearch.example.org
+  liferay:
+    build: ./liferay
+    container_name: liferay
+    depends_on:
+      - elasticsearch
+      - mysql
+    networks:
+      - network-liferay-stack
+# Note: In production systems, you wouldn't expose these ports publicly, but only through your loadbalancer
+# In training we're accessing them for test- and demonstration purposes.
+    ports:
+      - 8080:8080
+      - 127.0.0.1:11311:11311
+    volumes:
+      - liferay-data:/opt/liferay/data
+      - liferay-work:/opt/liferay/work
+  mysql:
+    build: ./mysql
+    container_name: mysql
+    networks:
+      - network-liferay-stack
+## Note: In production systems, you wouldn't expose this port publicly, it'd only be accessed by Liferay, and potentially your backup solution
+## In training we're making it available for test- and demonstration purposes.
+    ports:
+      - 3306:3306
+    environment:
+# TODO: Create user liferay
+#      MYSQL_USER: liferay
+#      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_ROOT_HOST: '%' 
+#      MYSQL_ROOT_HOST: *.* 
+    volumes:
+      - mysql:/var/lib/mysql
+networks:
+  network-liferay-stack:
+    name: network-liferay-stack
+volumes:
+  elasticsearch:
+  liferay-data:
+  liferay-work:
+  mysql:
