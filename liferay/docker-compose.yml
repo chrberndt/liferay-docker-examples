@@ -1,0 +1,10 @@
+version: "3.6"
+services:
+  liferay:
+    build: .
+    container_name: liferay
+# Note: In production systems, you wouldn't expose these ports publicly, but only through your loadbalancer
+# In training we're accessing them for test- and demonstration purposes.
+    ports:
+      - 8080:8080
+      - 127.0.0.1:11311:11311
