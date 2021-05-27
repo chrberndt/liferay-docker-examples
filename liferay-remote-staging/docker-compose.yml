@@ -1,0 +1,37 @@
+version: "3.6"
+services:
+  liferay-staging:
+    build: ./liferay
+    container_name: liferay-staging
+    networks:
+      network-liferay-staging:
+        ipv4_address: 172.16.238.10
+    ports:
+      - 8080:8080
+    volumes:
+      - liferay-staging-data:/opt/liferay/data
+      - liferay-staging-work:/opt/liferay/work
+  liferay-live:
+    build: ./liferay
+    container_name: liferay-live
+    networks:
+      network-liferay-staging:
+        ipv4_address: 172.16.238.11
+    ports:
+      - 8081:8080
+    volumes:
+      - liferay-live-data:/opt/liferay/data
+      - liferay-live-work:/opt/liferay/work
+networks:
+networks:
+  network-liferay-staging:
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.16.238.0/24"
+        - subnet: "2001:3984:3989::/64"
+volumes:
+  liferay-staging-data:
+  liferay-staging-work:
+  liferay-live-data:
+  liferay-live-work:
