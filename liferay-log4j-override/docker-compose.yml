@@ -1,0 +1,21 @@
+version: "3.6"
+services:
+  liferay:
+    build: ./liferay
+    container_name: liferay
+    networks:
+      - network-liferay-log4-override
+# Note: In production systems, you wouldn't expose these ports publicly, but only through your loadbalancer
+# In training we're accessing them for test- and demonstration purposes.
+    ports:
+      - 8080:8080
+      - 127.0.0.1:11311:11311
+    volumes:
+      - liferay-data:/opt/liferay/data
+      - liferay-work:/opt/liferay/work
+networks:
+  network-liferay-log4-override:
+    name: network-liferay-log4-override
+volumes:
+  liferay-data:
+  liferay-work:
