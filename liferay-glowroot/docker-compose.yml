@@ -1,0 +1,10 @@
+version: "3.6"
+services:
+  liferay:
+    build: .
+    container_name: liferay-glowroot
+    ports:
+      - 8080:8080
+      - 4000:4000 # glowroot gui
+    environment:
+      JAVA_OPTS: "-javaagent:/opt/glowroot/glowroot.jar"
