@@ -1,0 +1,27 @@
+version: "3.6"
+services:
+  liferay:
+    build: ./liferay
+    container_name: liferay
+    networks:
+      - network-liferay-nginx
+# Note: In production systems, you wouldn't expose these ports publicly, but only through your loadbalancer
+# In this example we're accessing them for test- and demonstration purposes.
+    ports:
+      - 4000:4000
+      - 8080:8080
+      - 127.0.0.1:11311:11311
+    environment:
+      JAVA_OPTS: "-javaagent:/opt/glowroot/glowroot.jar"
+  nginx:
+    build: ./nginx
+    container_name: nginx 
+    depends_on:
+      - liferay
+    networks:
+      - network-liferay-nginx
+    ports:
+      - 80:80
+networks:
+  network-liferay-nginx:
+    name: network-liferay-nginx
