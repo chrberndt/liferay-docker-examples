@@ -1,4 +1,4 @@
-# Manual configuration steps
+# Usage Instructions
 
 ## Documentation
 
@@ -12,4 +12,3 @@ see: [https://learn.liferay.com/dxp/latest/en/site-building/publishing-tools/sta
   * Remote Port: 8080
   * Remote Path Context: <empty> (default)
   * Remote Site ID: The site id obtained in the previous step (e.g. 20121)
-  
