@@ -2,7 +2,8 @@
 FROM liferay/dxp:7.2.10-ga1-d1.5.8-20210513181009
 
 # Copy the license key to the container ($LIFERAY_HOME is defined in the parent image)
-COPY --chown=liferay:liferay activation-key-dxpdevelopment-7.2-developeractivationkeys.xml $LIFERAY_HOME/deploy
+COPY --chown=liferay:liferay activation-key-dxpdevelopment-7.3-liferaycom.xml $LIFERAY_HOME/deploy
+#COPY --chown=liferay:liferay activation-key-dxpdevelopment-7.2-developeractivationkeys.xml $LIFERAY_HOME/deploy
 
 # TODO: copy the TunnelAuthVerifierConfiguration only to the liferay-live image 
 # Configure liferay-live to accept tunnel connections from liferay-staging
