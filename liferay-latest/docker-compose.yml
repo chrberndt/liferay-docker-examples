@@ -5,3 +5,5 @@ services:
     container_name: liferay-latest
     ports:
       - 8080:8080
+    environment:
+      - JAVA_VERSION=zulu11
