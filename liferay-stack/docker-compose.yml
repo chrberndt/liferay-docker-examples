@@ -48,6 +48,8 @@ services:
     ports:
       - 8080:8080
       - 127.0.0.1:11311:11311
+    environment:
+      - JAVA_VERSION=zulu11
     volumes:
       - liferay-data:/opt/liferay/data
       - liferay-work:/opt/liferay/work
