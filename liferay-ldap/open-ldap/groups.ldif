@@ -1,0 +1,203 @@
+# Example Company's Entry
+dn: cn=Example Company,dc=example,dc=org
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: Example Company
+description: Journal Subsidy
+uniqueMember: uid=eknight,dc=example,dc=org
+uniqueMember: uid=omiles,dc=example,dc=org
+uniqueMember: uid=mwalker,dc=example,dc=org
+uniqueMember: uid=pnovola,dc=example,dc=org
+uniqueMember: uid=lblythe,dc=example,dc=org
+uniqueMember: uid=smaalouf,dc=example,dc=org
+uniqueMember: uid=hwinters,dc=example,dc=org
+uniqueMember: uid=asaylor,dc=example,dc=org
+uniqueMember: uid=gpowers,dc=example,dc=org
+uniqueMember: uid=bmills,dc=example,dc=org
+uniqueMember: uid=jsuarez,dc=example,dc=org
+uniqueMember: uid=awashington,dc=example,dc=org
+uniqueMember: uid=pvance,dc=example,dc=org
+uniqueMember: uid=amancelli,dc=example,dc=org
+uniqueMember: uid=aalexis,dc=example,dc=org
+
+# Executives' Entry
+dn: cn=Executives,dc=example,dc=org
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: Executives
+description: Executive
+uniqueMember: uid=sbeech,dc=example,dc=org
+uniqueMember: uid=awilson,dc=example,dc=org
+uniqueMember: uid=jprince,dc=example,dc=org
+uniqueMember: uid=cokoye,dc=example,dc=org
+uniqueMember: uid=dfreeman,dc=example,dc=org
+uniqueMember: uid=ashephard,dc=example,dc=org
+uniqueMember: uid=ehoward,dc=example,dc=org
+uniqueMember: uid=csorenson,dc=example,dc=org
+uniqueMember: uid=gsnow,dc=example,dc=org
+
+# Administration: Finance's Entry
+dn: cn=Administration: Finance,dc=example,dc=org
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: Administration: Finance
+description: Finance
+uniqueMember: uid=fworthing,dc=example,dc=org
+uniqueMember: uid=krose,dc=example,dc=org
+uniqueMember: uid=ttownsend,dc=example,dc=org
+uniqueMember: uid=iowain,dc=example,dc=org
+uniqueMember: uid=hfrederickson,dc=example,dc=org
+uniqueMember: uid=skang,dc=example,dc=org
+uniqueMember: uid=bbakersfield,dc=example,dc=org
+uniqueMember: uid=mcollins,dc=example,dc=org
+
+# Administration: Public Relations 
+dn: cn=Administration: Public Relations,dc=example,dc=org
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: Administration: Public Relations 
+description: Public Relations 
+uniqueMember: uid=ctinley,dc=example,dc=org
+uniqueMember: uid=avangaard,dc=example,dc=org
+uniqueMember: uid=animri,dc=example,dc=org
+uniqueMember: uid=jsharp,dc=example,dc=org
+uniqueMember: uid=charper,dc=example,dc=org
+uniqueMember: uid=lchau,dc=example,dc=org
+uniqueMember: uid=cwaterford,dc=example,dc=org
+uniqueMember: uid=gbarelli,dc=example,dc=org
+
+# Administration: Human Resources 
+dn: cn=Administration: Human Resources,dc=example,dc=org
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: Administration: Human Resources 
+description: Human Resources 
+uniqueMember: uid=kbreckinridge,dc=example,dc=org
+uniqueMember: uid=fashberry,dc=example,dc=org
+uniqueMember: uid=hmervil,dc=example,dc=org
+uniqueMember: uid=mlim,dc=example,dc=org
+uniqueMember: uid=imacarthur,dc=example,dc=org
+uniqueMember: uid=smanning,dc=example,dc=org
+uniqueMember: uid=mtyler,dc=example,dc=org
+uniqueMember: uid=pwoods,dc=example,dc=org
+uniqueMember: uid=lchristie,dc=example,dc=org
+
+# Hotels: Budget Managers 
+dn: cn=Hotels: Budget Managers,dc=example,dc=org
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: Hotels: Budget Managers 
+description: Budget Hotel Managers 
+uniqueMember: uid=rkelly,dc=example,dc=org
+uniqueMember: uid=tdoolittle,dc=example,dc=org
+uniqueMember: uid=jmiller,dc=example,dc=org
+uniqueMember: uid=lmartinez,dc=example,dc=org
+uniqueMember: uid=nblackstone,dc=example,dc=org
+uniqueMember: uid=salba,dc=example,dc=org
+uniqueMember: uid=rhawthorne,dc=example,dc=org
+uniqueMember: uid=nbarritz,dc=example,dc=org
+uniqueMember: uid=hfleet,dc=example,dc=org
+uniqueMember: uid=sshumacher,dc=example,dc=org
+uniqueMember: uid=oqasim,dc=example,dc=org
+uniqueMember: uid=bwilliams,dc=example,dc=org
+
+
+# Hotels: Moderate Managers 
+dn: cn=Hotels: Moderate Managers,dc=example,dc=org
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: Hotels: Moderate Managers 
+description: Moderate Hotel Managers 
+uniqueMember: uid=egruber,dc=example,dc=org
+uniqueMember: uid=jgonzalez,dc=example,dc=org
+uniqueMember: uid=lchan,dc=example,dc=org
+uniqueMember: uid=jluther,dc=example,dc=org
+uniqueMember: uid=fsolarin,dc=example,dc=org
+uniqueMember: uid=tlincoln,dc=example,dc=org
+uniqueMember: uid=emaltov,dc=example,dc=org
+uniqueMember: uid=rredding,dc=example,dc=org
+
+# Hotels: Luxury Managers 
+dn: cn=Hotels: Luxury Managers,dc=example,dc=org
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: Hotels: Luxury Managers 
+description: Luxury Hotel Managers 
+uniqueMember: uid=glibinski,dc=example,dc=org
+uniqueMember: uid=ejames,dc=example,dc=org
+uniqueMember: uid=pmorrow,dc=example,dc=org
+uniqueMember: uid=dharrington,dc=example,dc=org
+uniqueMember: uid=kwilliamson,dc=example,dc=org
+uniqueMember: uid=ghall,dc=example,dc=org
+uniqueMember: uid=jwhite,dc=example,dc=org
+uniqueMember: uid=lcarson,dc=example,dc=org
+uniqueMember: uid=tbuchanan,dc=example,dc=org
+uniqueMember: uid=lhill,dc=example,dc=org
+
+# Hotels: Budget Staff 
+dn: cn=Hotels: Budget Staff,dc=example,dc=org
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: Hotels: Budget Staff 
+description: Budget Hotel Staff 
+uniqueMember: uid=mcastleton,dc=example,dc=org
+uniqueMember: uid=jcauvin,dc=example,dc=org
+uniqueMember: uid=fedwards,dc=example,dc=org
+uniqueMember: uid=cdeveraux,dc=example,dc=org
+uniqueMember: uid=sfields,dc=example,dc=org
+uniqueMember: uid=skim,dc=example,dc=org
+uniqueMember: uid=gbrandon,dc=example,dc=org
+
+# Hotels: Moderate Staff 
+dn: cn=Hotels: Moderate Staff,dc=example,dc=org
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: Hotels: Moderate Staff 
+description: Moderate Hotel Staff 
+uniqueMember: uid=cflannigan,dc=example,dc=org
+uniqueMember: uid=bsmithson,dc=example,dc=org
+uniqueMember: uid=ahart,dc=example,dc=org
+uniqueMember: uid=cspirozo,dc=example,dc=org
+uniqueMember: uid=seisenhower,dc=example,dc=org
+uniqueMember: uid=jsterling,dc=example,dc=org
+
+# Hotels: Luxury Staff 
+dn: cn=Hotels: Luxury Staff,dc=example,dc=org
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: Hotels: Budget Staff 
+description: Budget Hotel Staff 
+uniqueMember: uid=nbridges,dc=example,dc=org
+uniqueMember: uid=nnoran,dc=example,dc=org
+uniqueMember: uid=apatterson,dc=example,dc=org
+uniqueMember: uid=tforzano,dc=example,dc=org
+uniqueMember: uid=cfarris,dc=example,dc=org
+uniqueMember: uid=dstevens,dc=example,dc=org
+uniqueMember: uid=spark,dc=example,dc=org
+uniqueMember: uid=akim,dc=example,dc=org
+
+# Marketing: Research 
+dn: cn=Marketing: Research,dc=example,dc=org
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: Marketing: Research 
+description: Research 
+uniqueMember: uid=mladd,dc=example,dc=org
+uniqueMember: uid=sgregson,dc=example,dc=org
+uniqueMember: uid=nkingston,dc=example,dc=org
+uniqueMember: uid=mcheveaux,dc=example,dc=org
+
+# Marketing: Creative 
+dn: cn=Marketing: Creative,dc=example,dc=org
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: Marketing: Creative 
+description: Marketer 
+uniqueMember: uid=acarelli,dc=example,dc=org
+uniqueMember: uid=eadams,dc=example,dc=org
+uniqueMember: uid=hvance,dc=example,dc=org
+uniqueMember: uid=vallen,dc=example,dc=org
+uniqueMember: uid=mflores,dc=example,dc=org
+uniqueMember: uid=nmichaels,dc=example,dc=org
+uniqueMember: uid=mllewelyn,dc=example,dc=org
+uniqueMember: uid=ktanaka,dc=example,dc=org
