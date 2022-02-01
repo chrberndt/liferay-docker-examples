@@ -1,0 +1,24 @@
+version: "3.7"
+services:
+  open-ldap:
+    build: ./open-ldap
+    container_name: open-ldap
+    networks:
+      - network-liferay-ldap
+    ports:
+      - 389:389
+      - 636:636
+  liferay:
+    build: ./liferay
+    container_name: liferay
+    depends_on:
+      - open-ldap
+    networks:
+      - network-liferay-ldap
+    ports:
+      - 8080:8080
+    environment:
+      - JAVA_VERSION=zulu11
+networks:
+  network-liferay-ldap:
+    name: network-liferay-ldap
