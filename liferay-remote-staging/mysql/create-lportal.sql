@@ -1,0 +1,5 @@
+DROP DATABASE IF EXISTS lportal_staging;
+CREATE DATABASE lportal_staging CHARACTER SET utf8;
+
+DROP DATABASE IF EXISTS lportal_live;
+CREATE DATABASE lportal_live CHARACTER SET utf8;

@@ -8,6 +8,13 @@ services:
         ipv4_address: 172.16.238.10
     ports:
       - 8080:8080
+    environment:
+      - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_DRIVER_UPPERCASEC_LASS_UPPERCASEN_AME=com.mysql.cj.jdbc.Driver
+      - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_URL=jdbc:mysql://mysql:3306/lportal_staging?characterEncoding=UTF-8&dontTrackOpenResources=true&holdResultsOpenOverStatementClose=true&serverTimezone=GMT&useFastDateParsing=false&useUnicode=true
+      - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_USERNAME=root
+      - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_PASSWORD=secret
+      - LIFERAY_SETUP_PERIOD_DATABASE_PERIOD_JAR_PERIOD_URL_OPENBRACKET_COM_PERIOD_MYSQL_PERIOD_CJ_PERIOD_JDBC_PERIOD__UPPERCASED_RIVER_CLOSEBRACKET_=https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.15/mysql-connector-java-8.0.15.jar
+      - LIFERAY_UPGRADE_PERIOD_DATABASE_PERIOD_TRANSACTIONS_PERIOD_DISABLED=true
     volumes:
       - liferay-staging-data:/opt/liferay/data
       - liferay-staging-work:/opt/liferay/work
@@ -19,9 +26,35 @@ services:
         ipv4_address: 172.16.238.11
     ports:
       - 8081:8080
+    environment:
+      - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_DRIVER_UPPERCASEC_LASS_UPPERCASEN_AME=com.mysql.cj.jdbc.Driver
+      - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_URL=jdbc:mysql://mysql:3306/lportal_live?characterEncoding=UTF-8&dontTrackOpenResources=true&holdResultsOpenOverStatementClose=true&serverTimezone=GMT&useFastDateParsing=false&useUnicode=true
+      - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_USERNAME=root
+      - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_PASSWORD=secret
+      - LIFERAY_SETUP_PERIOD_DATABASE_PERIOD_JAR_PERIOD_URL_OPENBRACKET_COM_PERIOD_MYSQL_PERIOD_CJ_PERIOD_JDBC_PERIOD__UPPERCASED_RIVER_CLOSEBRACKET_=https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.15/mysql-connector-java-8.0.15.jar
+      - LIFERAY_UPGRADE_PERIOD_DATABASE_PERIOD_TRANSACTIONS_PERIOD_DISABLED=true
+    volumes:
     volumes:
       - liferay-live-data:/opt/liferay/data
       - liferay-live-work:/opt/liferay/work
+  mysql:
+    build: ./mysql
+    container_name: mysql
+    networks:
+      - network-liferay-staging
+## Note: In production systems, you wouldn't expose this port publicly, it'd only be accessed by Liferay, and potentially your backup solution
+## In training we're making it available for test- and demonstration purposes.
+    ports:
+      - 3306:3306
+    environment:
+# TODO: Create user liferay
+#      MYSQL_USER: liferay
+#      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_ROOT_HOST: '%'
+#      MYSQL_ROOT_HOST: *.*
+    volumes:
+      - mysql:/var/lib/mysql
 networks:
 networks:
   network-liferay-staging:
@@ -35,3 +68,4 @@ volumes:
   liferay-staging-work:
   liferay-live-data:
   liferay-live-work:
+  mysql:
