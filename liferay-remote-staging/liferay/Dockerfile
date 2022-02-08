@@ -1,4 +1,6 @@
 # Use an official Liferay image as a parent image
+#FROM liferay/dxp:7.2.10-ga1-d2.0.10-20211225004005
+#FROM liferay/dxp:7.3.10-sp3-d2.0.15-20220207215802
 FROM liferay/dxp:7.3.10-dxp-1-d2.0.4-20211022091526
 
 # Copy the license key to the container ($LIFERAY_HOME is defined in the parent image)
