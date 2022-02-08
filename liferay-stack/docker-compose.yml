@@ -51,6 +51,7 @@ services:
     environment:
       - JAVA_VERSION=zulu11
     volumes:
+      - ./mount:/mnt/liferay
       - liferay-data:/opt/liferay/data
       - liferay-work:/opt/liferay/work
   mysql:
