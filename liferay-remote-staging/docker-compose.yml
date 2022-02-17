@@ -8,11 +8,15 @@ services:
         ipv4_address: 172.16.238.10
     ports:
       - 8080:8080
+      - 8002:8000
     environment:
+      - JAVA_VERSION=zulu11
+      - JPDA_ADDRESS=*:8000
       - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_DRIVER_UPPERCASEC_LASS_UPPERCASEN_AME=com.mysql.cj.jdbc.Driver
       - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_URL=jdbc:mysql://mysql:3306/lportal_staging?characterEncoding=UTF-8&dontTrackOpenResources=true&holdResultsOpenOverStatementClose=true&serverTimezone=GMT&useFastDateParsing=false&useUnicode=true
       - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_USERNAME=root
       - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_PASSWORD=secret
+      - LIFERAY_JPDA_ENABLED=true
       - LIFERAY_SETUP_PERIOD_DATABASE_PERIOD_JAR_PERIOD_URL_OPENBRACKET_COM_PERIOD_MYSQL_PERIOD_CJ_PERIOD_JDBC_PERIOD__UPPERCASED_RIVER_CLOSEBRACKET_=https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.22/mysql-connector-java-8.0.22.jar
       - LIFERAY_UPGRADE_PERIOD_DATABASE_PERIOD_AUTO_PERIOD_RUN=true
     volumes:
@@ -27,11 +31,15 @@ services:
         ipv4_address: 172.16.238.11
     ports:
       - 8081:8080
+      - 8001:8000
     environment:
+      - JAVA_VERSION=zulu11
+      - JPDA_ADDRESS=*:8000
       - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_DRIVER_UPPERCASEC_LASS_UPPERCASEN_AME=com.mysql.cj.jdbc.Driver
       - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_URL=jdbc:mysql://mysql:3306/lportal_live?characterEncoding=UTF-8&dontTrackOpenResources=true&holdResultsOpenOverStatementClose=true&serverTimezone=GMT&useFastDateParsing=false&useUnicode=true
       - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_USERNAME=root
       - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_PASSWORD=secret
+      - LIFERAY_JPDA_ENABLED=true
       - LIFERAY_SETUP_PERIOD_DATABASE_PERIOD_JAR_PERIOD_URL_OPENBRACKET_COM_PERIOD_MYSQL_PERIOD_CJ_PERIOD_JDBC_PERIOD__UPPERCASED_RIVER_CLOSEBRACKET_=https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.22/mysql-connector-java-8.0.22.jar
       - LIFERAY_UPGRADE_PERIOD_DATABASE_PERIOD_AUTO_PERIOD_RUN=true
     volumes:
