@@ -20,7 +20,7 @@ ldapsearch -x -H ldap://localhost -b dc=example,dc=org -D "cn=admin,dc=example,d
 
   |     Field         |    Value      |
   | ----------------- | ------------- |
-  | Server Name   | __Training LDAP__ |
+  | Server Name   | __Demo LDAP__ |
   | Load Default Server Configuration For | __Open LDAP__ |
   | Base Provider URL | __ldap://open-ldap:389__ |
   | Base DN | __dc=example,dc=org__ |
