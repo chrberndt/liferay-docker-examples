@@ -1,7 +1,8 @@
 version: "3.6"
 services:
   liferay:
-    image: liferay/portal:7.4.3.11-ga11-d2.0.17-20220209133814
+    image: liferay/portal:7.4.3.19-ga19-d3.0.10-20220406172616
+    # image: liferay/portal:7.4.3.11-ga11-d2.0.17-20220209133814
     container_name: liferay-latest
     ports:
       - 8080:8080
