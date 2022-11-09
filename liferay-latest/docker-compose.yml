@@ -1,7 +1,8 @@
 version: "3.6"
 services:
   liferay:
-    image: liferay/portal:7.3.6-ga7
+    image: liferay/dxp:7.3.10-sp3-d5.0.0-20220831113958
+    #    image: liferay/portal:7.3.6-ga7
     container_name: liferay-latest
     ports:
       - 8080:8080
