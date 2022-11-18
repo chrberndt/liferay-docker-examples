@@ -9,8 +9,9 @@ services:
       - 9200:9200
       - 9300:9300
     environment:
-      - discovery.type=single-node
-      - node.name=elastic-1
+      discovery.type: single-node
+      node.name: elastic-1
+      ES_JAVA_OPTS: "-Xms750m -Xmx750m"
     volumes:
       - elasticsearch:/usr/share/elasticsearch/data
   haproxy:
