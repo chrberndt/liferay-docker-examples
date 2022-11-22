@@ -14,14 +14,38 @@ see: https://github.com/oracle/docker-images/blob/main/OracleDatabase/SingleInst
 
 1. Copy your `.dmp` file to the container: `docker cp my.dmp oracle:/tmp/`
 1. Create an export-import directory for PDBs in your container (the default data pump directory can't be used for PDBs): `$ORACLE_BASE/export_import` 
-1. Create a directory object
+1. On the container, login to `sqlplus` (as `system/<your-password>`)
+1. Connect to your initially created PDB: `alter session set container=liferay_restore`
+1. Create a user for the database to be restored:
+	```bash
+	SQL> create user liferay_restore identified by "secret";
 	```
-	CREATE DIRECTORY EXPORT_IMPORT AS '/opt/oracle/export_import';
+1. Create a directory object
+	```bash
+	TODO: connect to sqlplus as system / sysdba?
+	SQL> CREATE DIRECTORY EXPORT_IMPORT AS '/opt/oracle/export_import';
 	```
 1. Create a tablespace and datafile for the database to be imported: 
-	``` 
-	TODO: connect to sqlplus as?
+	```bash
 	SQL> create tablespace liferay_restore datafile 'liferay_restore.dbf' size 2g autoextend on;
 	```
-
-
+1. Grant tablespace privileges:
+	```bash
+	SQL> grant unlimited tablespace to liferay_restore;
+	```
+1. Grant the session privilege to allow logins by liferay_restore;
+	```bash
+	SQL> grant session to liferay_restore;
+	```
+1. Allow liferay_restore the creation of tables:
+	```bash
+	SQL> grant create table to liferay_restore;
+	```
+1. Allow liferay_restore to read and write (log files) from / to the export_import directory:
+	```bash
+	SQL> grant read, write on directory export_import to liferay_restore;
+	```
+1. Import the data with `impdp`:
+	```bash
+	impdp liferay_restore/<your-password>@liferay_restore DUMPFILE=LIFERAY_RESTORE.dmp full=y directory=export_import
+	```
