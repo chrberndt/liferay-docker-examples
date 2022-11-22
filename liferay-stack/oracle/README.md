@@ -49,3 +49,16 @@ see: https://github.com/oracle/docker-images/blob/main/OracleDatabase/SingleInst
 	```bash
 	impdp liferay_restore/<your-password>@liferay_restore DUMPFILE=LIFERAY_RESTORE.dmp full=y directory=export_import
 	```
+1. Configure `liferay/portal-ext.properties` accordingly:
+	```bash
+	##
+	  #
+	  # Oracle
+	  #
+	  jdbc.default.driverClassName=oracle.jdbc.OracleDriver
+	  jdbc.default.url=jdbc:oracle:thin:@oracle:1521/liferay_restore
+	  jdbc.default.username=liferay_restore
+	  jdbc.default.password=<your-password>
+	```
+
+
