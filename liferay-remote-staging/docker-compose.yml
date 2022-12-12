@@ -10,7 +10,9 @@ services:
       - 8080:8080
     environment:
       - JAVA_VERSION=zulu11
+      - LIFERAY_COMPANY_PERIOD_SECURITY_PERIOD_STRANGERS_PERIOD_VERIFY=false
     volumes:
+      - ./mount:/mnt/liferay
       - liferay-staging-data:/opt/liferay/data
       - liferay-staging-work:/opt/liferay/work
   liferay-live:
@@ -23,6 +25,7 @@ services:
       - 8081:8080
     environment:
       - JAVA_VERSION=zulu11
+      - LIFERAY_COMPANY_PERIOD_SECURITY_PERIOD_STRANGERS_PERIOD_VERIFY=false
     volumes:
       - liferay-live-data:/opt/liferay/data
       - liferay-live-work:/opt/liferay/work
