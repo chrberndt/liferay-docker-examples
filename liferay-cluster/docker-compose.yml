@@ -1,0 +1,109 @@
+version: "3.6"
+services:
+  elasticsearch:
+    build: ./elasticsearch
+    container_name: elastic-1
+    networks:
+      - network-liferay-cluster
+    ports: 
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - discovery.type=single-node
+      - node.name=elastic-1
+    volumes:
+      - elasticsearch:/usr/share/elasticsearch/data
+  haproxy:
+    build: ./haproxy
+    container_name: haproxy
+    depends_on:
+      - liferay-1
+      - liferay-2
+    networks:
+      - network-liferay-cluster
+# Note: We're limiting ourselves to http and not https, due to the inherent difficulty to
+# operate with valid server certificates
+    ports:
+      - 80:80
+      - 9999:9999
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.9.3
+    container_name: kibana 
+    networks:
+      - network-liferay-cluster
+    ports:
+      - 5601:5601 
+    environment:
+      ELASTICSEARCH_HOSTS: http://elastic-1:9200
+  liferay-1:
+    build: ./liferay
+    container_name: liferay-1
+    depends_on:
+      - elasticsearch
+      - mysql
+    networks:
+      - network-liferay-cluster
+# Note: In production systems, you wouldn't expose these ports publicly, but only through your loadbalancer
+# Here, we're accessing them for test- and demonstration purposes.
+    ports:
+      - 8080:8080
+        #      - 127.0.0.1:11311:11311
+    environment:
+      LIFERAY_CLUSTER_PERIOD_LINK_PERIOD_ENABLED: true
+      LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_DRIVER_UPPERCASEC_LASS_UPPERCASEN_AME: com.mysql.cj.jdbc.Driver
+      LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_PASSWORD: secret
+      LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_URL: jdbc:mysql://mysql/lportal?characterEncoding=UTF-8&dontTrackOpenResources=true&holdResultsOpenOverStatementClose=true&serverTimezone=GMT&useFastDateParsing=false&useUnicode=true
+      LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_USERNAME: root
+      LIFERAY_WEB_PERIOD_SERVER_PERIOD_DISPLAY_PERIOD_NODE: true
+    volumes:
+      - liferay-data:/opt/liferay/data
+      - liferay-1-work:/opt/liferay/work
+  liferay-2:
+    build: ./liferay
+    container_name: liferay-2
+    depends_on:
+      - elasticsearch
+      - mysql
+    networks:
+      - network-liferay-cluster
+    ports:
+      - 8081:8080
+        #      - 127.0.0.1:11311:11311
+    environment:
+      LIFERAY_CLUSTER_PERIOD_LINK_PERIOD_ENABLED: true
+      LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_DRIVER_UPPERCASEC_LASS_UPPERCASEN_AME: com.mysql.cj.jdbc.Driver
+      LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_PASSWORD: secret
+      LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_URL: jdbc:mysql://mysql/lportal?characterEncoding=UTF-8&dontTrackOpenResources=true&holdResultsOpenOverStatementClose=true&serverTimezone=GMT&useFastDateParsing=false&useUnicode=true
+      LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_USERNAME: root
+      LIFERAY_WEB_PERIOD_SERVER_PERIOD_DISPLAY_PERIOD_NODE: true
+    volumes:
+      - liferay-data:/opt/liferay/data
+      - liferay-2-work:/opt/liferay/work
+# TODO: Create user liferay
+  mysql:
+    build: ./mysql
+    container_name: mysql
+    networks:
+      - network-liferay-cluster
+## Note: In production systems, you wouldn't expose this port publicly, it'd only be accessed by Liferay, and potentially your backup solution
+## In training we're making it available for test- and demonstration purposes.
+    ports:
+      - 3306:3306
+    environment:
+# TODO: Create user liferay
+#      MYSQL_USER: liferay
+#      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_ROOT_HOST: '%' 
+#      MYSQL_ROOT_HOST: *.* 
+    volumes:
+      - mysql:/var/lib/mysql
+networks:
+  network-liferay-cluster:
+    name: network-liferay-cluster
+volumes:
+  elasticsearch:
+  liferay-data:
+  liferay-1-work:
+  liferay-2-work:
+  mysql:

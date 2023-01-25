@@ -1,0 +1,3 @@
+cluster.name: LiferayElasticsearchCluster
+node.name: elasticsearch-1
+network.host: 0.0.0.0
