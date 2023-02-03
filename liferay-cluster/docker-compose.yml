@@ -51,6 +51,7 @@ services:
     environment:
       JAVA_VERSION: zulu11
       LIFERAY_CLUSTER_PERIOD_LINK_PERIOD_ENABLED: true
+      LIFERAY_COMPANY_PERIOD_SECURITY_PERIOD_STRANGERS_PERIOD_VERIFY: false
       LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_DRIVER_UPPERCASEC_LASS_UPPERCASEN_AME: com.mysql.cj.jdbc.Driver
       LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_PASSWORD: secret
       LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_URL: jdbc:mysql://mysql/lportal?characterEncoding=UTF-8&dontTrackOpenResources=true&holdResultsOpenOverStatementClose=true&serverTimezone=GMT&useFastDateParsing=false&useUnicode=true
@@ -73,6 +74,7 @@ services:
     environment:
       JAVA_VERSION: zulu11
       LIFERAY_CLUSTER_PERIOD_LINK_PERIOD_ENABLED: true
+      LIFERAY_COMPANY_PERIOD_SECURITY_PERIOD_STRANGERS_PERIOD_VERIFY: false
       LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_DRIVER_UPPERCASEC_LASS_UPPERCASEN_AME: com.mysql.cj.jdbc.Driver
       LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_PASSWORD: secret
       LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_URL: jdbc:mysql://mysql/lportal?characterEncoding=UTF-8&dontTrackOpenResources=true&holdResultsOpenOverStatementClose=true&serverTimezone=GMT&useFastDateParsing=false&useUnicode=true
