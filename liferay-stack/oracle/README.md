@@ -4,9 +4,7 @@
 
 see: https://github.com/oracle/docker-images/blob/main/OracleDatabase/SingleInstance/README.md
 
-### Short Summary ###
-
-Build the image:
+In short: build the image:
 
 ```
 git clone git@github.com:oracle/docker-images.git
@@ -15,10 +13,10 @@ TODO: download LINUX.X64_193000_db_home.zip to 19.3.0 // or the version you're i
 ./buildContainerImage.sh -v 19.3.0 -t oracle-19.3.0 -s
 ```
 
-Run the image:
+and launch the container:
 
 ```
- docker run -- oracle-19.3.0 -p 1521:1521 5500:5500 2484:2484 -e ORACLE_PDB=lportal -e ORACLE_PWD=secret
+docker run --name oracle -p 1521:1521 -p 5500:5500 -p 2484:2484 -e ORACLE_PDB=lportal -e ORACLE_PWD=secret oracle-19.3.0
 ```
 
 ## Create Pluggable Database (PDP) for Liferay
