@@ -1,5 +1,5 @@
 # Use an official Liferay image as parent image
-FROM liferay/dxp:7.3.10-dxp-1-d2.0.15-20220207214414
+FROM liferay/dxp:7.4.13-u71-d5.0.23-20230406093831
 
 # Copy the license key to the container ($LIFERAY_HOME is defined in the parent image)
 COPY --chown=liferay:liferay activation-key-dxpdevelopment-7.4-developeractivationkeys.xml $LIFERAY_HOME/deploy
