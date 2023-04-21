@@ -31,24 +31,23 @@ docker run --name oracle -p 1521:1521 -p 5500:5500 -p 2484:2484 -e ORACLE_PDB=lp
 1. Create an export-import directory for PDBs in your container (the default data pump directory can't be used for PDBs): `$ORACLE_BASE/export_import`
 1. On the container, login to `sqlplus` (as `system/<your-password>`)
 1. Connect to your initially created PDB: `alter session set container=liferay_restore`
-1. Create a user for the database to be restored:
+1. Create a user for the database to be restored (as system)
 	```bash
 	SQL> create user liferay_restore identified by secret container=current;
 	```
-1. Create a directory object
+1. Create a directory object (as system)
 	```bash
-	TODO: connect to sqlplus as system / sysdba?
 	SQL> CREATE DIRECTORY EXPORT_IMPORT AS '/opt/oracle/export_import';
 	```
-1. Create a tablespace and datafile for the database to be imported:
+1. Create a tablespace and datafile for the database to be imported (as system)
 	```bash
 	SQL> create tablespace liferay_restore datafile 'liferay_restore.dbf' size 2g autoextend on;
 	```
-1. Grant tablespace privileges:
+1. Grant tablespace privileges (as system)
 	```bash
 	SQL> grant unlimited tablespace to liferay_restore;
 	```
-1. Grant the session privilege to allow logins by liferay_restore;
+1. Grant the session privilege to allow logins by liferay_restore (as system)
 	```bash
 	SQL> grant create session to liferay_intranet container=current;
 	```
