@@ -49,7 +49,7 @@ docker run --name oracle -p 1521:1521 -p 5500:5500 -p 2484:2484 -e ORACLE_PDB=lp
 	```
 1. Grant the session privilege to allow logins by liferay_restore (as system)
 	```bash
-	SQL> grant create session to liferay_intranet container=current;
+	SQL> grant create session to liferay_restore container=current;
 	```
 1. Allow liferay_restore the creation of tables:
 	```bash
