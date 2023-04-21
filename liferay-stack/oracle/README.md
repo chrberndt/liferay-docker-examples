@@ -33,7 +33,7 @@ docker run --name oracle -p 1521:1521 -p 5500:5500 -p 2484:2484 -e ORACLE_PDB=lp
 1. Connect to your initially created PDB: `alter session set container=liferay_restore`
 1. Create a user for the database to be restored:
 	```bash
-	SQL> create user liferay_restore identified by secret container=current;;
+	SQL> create user liferay_restore identified by secret container=current;
 	```
 1. Create a directory object
 	```bash
