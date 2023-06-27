@@ -66,12 +66,12 @@ docker run --name oracle -p 1521:1521 -p 5500:5500 -p 2484:2484 -e ORACLE_PDB=lp
 	SQL> grant read, write on directory export_import to liferay_restore;
 	```
 1. Quit sqlplus
-	```
+	```bash
 	SQL> exit
 	```
 1. Copy the dump file to the export_import directory:
 	```bash
-	cp /tmp/LIFERAY_RESTORE.dmp'
+	cp /tmp/LIFERAY_RESTORE.dmp $ORACLE_BASE/export_import
 	```
 1. Import the data with `impdp`:
 	```bash
