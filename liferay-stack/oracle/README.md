@@ -29,7 +29,10 @@ docker run --name oracle -p 1521:1521 -p 5500:5500 -p 2484:2484 -e ORACLE_PDB=lp
 
 1. Copy your `.dmp` file to the container: `docker cp my.dmp oracle:/tmp/`
 1. Create an export-import directory for PDBs in your container (the default data pump directory can't be used for PDBs): `$ORACLE_BASE/export_import`
-1. On the container, login to `sqlplus` (as `system/<your-password>`)
+1. On the container, login to `sqlplus` (as `system/<your-password>`), e.g.
+   	```bash
+        sqlplus system/secret@orclcdb
+    	```
 1. Connect to your initially created PDB: `alter session set container=liferay_restore`
 1. Create a user for the database to be restored (as system)
 	```bash
