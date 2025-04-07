@@ -12,6 +12,8 @@ services:
       LIFERAY_MAIL_PERIOD_SEND_PERIOD_BLACKLIST: "noreply@liferay.com,noreply@domain.invalid"
       LIFERAY_MAIL_PERIOD_SESSION_PERIOD_MAIL_PERIOD_SMTP_PERIOD_HOST: "mailhog"
       LIFERAY_MAIL_PERIOD_SESSION_PERIOD_MAIL_PERIOD_SMTP_PERIOD_PORT: 1025
+    volumes:
+      - ./mount/patching:/mnt/liferay/patching
   mailhog:
     image: mailhog/mailhog
     ports:
