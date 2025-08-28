@@ -1,7 +1,6 @@
 services:
   liferay:
-    #image: liferay/dxp:2024.q2.9
-    image: liferay/dxp:2024.q4.4
+    image: liferay/dxp:2025.q1.11-lts-d8.0.8-20250509040029
     container_name: liferay-latest
     ports:
       - 8080:8080
