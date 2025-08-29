@@ -17,4 +17,5 @@ ADD --chown=liferay:liferay https://raw.githubusercontent.com/vishnubob/wait-for
 RUN chmod +x /usr/local/bin/wait-for-it.sh
 
 # Start Tomcat when the MySQL server has been started (override the ENTRYPOINT configured in the parent image)
-ENTRYPOINT /usr/local/bin/wait-for-it.sh -s -t 60 mysql:3306 -- $LIFERAY_HOME/tomcat/bin/catalina.sh run
+ENTRYPOINT /usr/local/bin/wait-for-it.sh -s -t 60 postgres:5432 -- $LIFERAY_HOME/tomcat/bin/catalina.sh run
+#ENTRYPOINT /usr/local/bin/wait-for-it.sh -s -t 60 mysql:3306 -- $LIFERAY_HOME/tomcat/bin/catalina.sh run

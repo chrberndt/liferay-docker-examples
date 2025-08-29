@@ -19,8 +19,6 @@ services:
       - liferay
     networks:
       - network-liferay-stack
-# Note: In this training, we're limiting ourselves to http and not https, due to the inherent difficulty to
-# operate with valid server certificates
     ports:
       - 80:80
       - 9999:9999
@@ -41,11 +39,15 @@ services:
       - mysql
     networks:
       - network-liferay-stack
-# Note: In production systems, you wouldn't expose these ports publicly, but only through your loadbalancer
-# In training we're accessing them for test- and demonstration purposes.
+# Note: In production systems, you wouldn't expose these ports publicly
     ports:
       - 8080:8080
       - 127.0.0.1:11311:11311
+    environment:
+      LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_DRIVER_UPPERCASEC_LASS_UPPERCASEN_AME: org.postgresql.Driver
+      LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_PASSWORD: secret
+      LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_URL: jdbc:postgresql://postgres:5432/lportal
+      LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_USERNAME: postgres
     volumes:
       - liferay-data:/opt/liferay/data
       - liferay-work:/opt/liferay/work
@@ -54,8 +56,7 @@ services:
     container_name: mysql
     networks:
       - network-liferay-stack
-## Note: In production systems, you wouldn't expose this port publicly, it'd only be accessed by Liferay, and potentially your backup solution
-## In training we're making it available for test- and demonstration purposes.
+## Note: In production systems, you wouldn't expose this port publicly
     ports:
       - 3306:3306
     environment:
@@ -67,6 +68,18 @@ services:
 #      MYSQL_ROOT_HOST: *.* 
     volumes:
       - mysql:/var/lib/mysql
+  postgres:
+    build: ./postgres
+    container_name: postgres
+    networks:
+      - network-liferay-stack
+## Note: In production systems, you wouldn't expose this port publicly
+#    ports:
+#  - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - postgres:/var/lib/postgresql/data
 networks:
   network-liferay-stack:
     name: network-liferay-stack
@@ -75,3 +88,4 @@ volumes:
   liferay-data:
   liferay-work:
   mysql:
+  postgres:
