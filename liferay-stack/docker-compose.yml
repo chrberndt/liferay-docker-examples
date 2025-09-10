@@ -48,6 +48,7 @@ services:
       LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_PASSWORD: secret
       LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_URL: jdbc:postgresql://postgres:5432/lportal
       LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_USERNAME: postgres
+      ELASTIC_NETWORK_HOST_ADDRESS: http://elastic-1:9200
     volumes:
       - liferay-data:/opt/liferay/data
       - liferay-work:/opt/liferay/work
