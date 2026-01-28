@@ -1,0 +1,38 @@
+services:
+  liferay:
+    image: liferay/dxp:2025.q1.20-lts-d9.0.93-20251212120625
+    read_only: true
+    container_name: liferay-read-only
+    ports:
+      - 8080:8080
+    environment:
+      GLOWROOT_ENABLED: true
+      LIFERAY_COMPANY_PERIOD_SECURITY_PERIOD_STRANGERS_PERIOD_VERIFY: "false"
+      LIFERAY_LAYOUT_PERIOD_USER_PERIOD_PRIVATE_PERIOD_LAYOUTS_PERIOD_AUTO_PERIOD_CREATE: "false"
+      LIFERAY_LAYOUT_PERIOD_USER_PERIOD_PUBLIC_PERIOD_LAYOUTS_PERIOD_AUTO_PERIOD_CREATE: "false"
+      LIFERAY_MAIL_PERIOD_SEND_PERIOD_BLACKLIST: "noreply@liferay.com,noreply@domain.invalid"
+      LIFERAY_MAIL_PERIOD_SESSION_PERIOD_MAIL_PERIOD_SMTP_PERIOD_HOST: "mailhog"
+      LIFERAY_MAIL_PERIOD_SESSION_PERIOD_MAIL_PERIOD_SMTP_PERIOD_PORT: 1025
+    volumes:
+      - ./mount/patching:/mnt/liferay/patching
+      - liferay-data:/opt/liferay/data
+      - liferay-deploy:/opt/liferay/deploy
+      - liferay-glowroot:/opt/liferay/glowroot
+      - liferay-logs:/opt/liferay/logs
+      - liferay-osgi:/opt/liferay/osgi
+      - liferay-routes:/opt/liferay/routes
+      - liferay-tomcat:/opt/liferay/tomcat
+      - liferay-work:/opt/liferay/work
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - 8025:8025
+volumes:
+  liferay-data:
+  liferay-deploy:
+  liferay-glowroot:
+  liferay-logs:
+  liferay-osgi:
+  liferay-routes:
+  liferay-tomcat:
+  liferay-work:
