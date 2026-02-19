@@ -1,6 +1,6 @@
 services:
   liferay:
-    image: liferay/dxp:2025.q1.20-lts-d9.0.93-20251212120625
+    image: liferay/dxp:2025.q1.16-lts-d9.0.92-20251203070932
     read_only: true
     container_name: liferay-read-only
     ports:
