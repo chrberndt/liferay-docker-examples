@@ -16,23 +16,16 @@ services:
     volumes:
       - ./mount/patching:/mnt/liferay/patching
       - liferay-data:/opt/liferay/data
-      - liferay-deploy:/opt/liferay/deploy
-      - liferay-glowroot:/opt/liferay/glowroot
-      - liferay-logs:/opt/liferay/logs
-      - liferay-osgi:/opt/liferay/osgi
-      - liferay-routes:/opt/liferay/routes
-      - liferay-tomcat:/opt/liferay/tomcat
-      - liferay-work:/opt/liferay/work
+      - /opt/liferay/deploy
+      - /opt/liferay/glowroot
+      - /opt/liferay/logs
+      - /opt/liferay/osgi
+      - /opt/liferay/routes
+      - /opt/liferay/tomcat
+      - /opt/liferay/work
   mailhog:
     image: mailhog/mailhog
     ports:
       - 8025:8025
 volumes:
   liferay-data:
-  liferay-deploy:
-  liferay-glowroot:
-  liferay-logs:
-  liferay-osgi:
-  liferay-routes:
-  liferay-tomcat:
-  liferay-work:
