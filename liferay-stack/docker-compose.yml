@@ -36,7 +36,8 @@ services:
     container_name: liferay
     depends_on:
       - elasticsearch
-      - mysql
+      - postgres
+#      - mysql
     networks:
       - network-liferay-stack
 # Note: In production systems, you wouldn't expose these ports publicly
@@ -51,32 +52,32 @@ services:
       ELASTIC_NETWORK_HOST_ADDRESS: http://elastic-1:9200
     volumes:
       - liferay-data:/opt/liferay/data
-      - liferay-work:/opt/liferay/work
-  mysql:
-    build: ./mysql
-    container_name: mysql
-    networks:
-      - network-liferay-stack
+#      - liferay-work:/opt/liferay/work
+#  mysql:
+#    build: ./mysql
+#    container_name: mysql
+#    networks:
+#      - network-liferay-stack
 ## Note: In production systems, you wouldn't expose this port publicly
-    ports:
-      - 3306:3306
-    environment:
+#    ports:
+#      - 3306:3306
+#    environment:
 # TODO: Create user liferay
 #      MYSQL_USER: liferay
 #      MYSQL_PASSWORD: secret
-      MYSQL_ROOT_PASSWORD: secret
-      MYSQL_ROOT_HOST: '%' 
+#      MYSQL_ROOT_PASSWORD: secret
+#      MYSQL_ROOT_HOST: '%' 
 #      MYSQL_ROOT_HOST: *.* 
-    volumes:
-      - mysql:/var/lib/mysql
+#    volumes:
+#      - mysql:/var/lib/mysql
   postgres:
     build: ./postgres
     container_name: postgres
     networks:
       - network-liferay-stack
 ## Note: In production systems, you wouldn't expose this port publicly
-#    ports:
-#  - 5432:5432
+    ports:
+      - 5432:5432
     environment:
       POSTGRES_PASSWORD: secret
     volumes:
@@ -87,6 +88,6 @@ networks:
 volumes:
   elasticsearch:
   liferay-data:
-  liferay-work:
-  mysql:
+#  liferay-work:
+#  mysql:
   postgres:
