@@ -4,6 +4,7 @@ services:
     container_name: liferay-latest
     ports:
       - 8080:8080
+      - 127.0.0.1:11311:11311
     environment:
       GLOWROOT_ENABLED: true
       LIFERAY_COMPANY_PERIOD_SECURITY_PERIOD_STRANGERS_PERIOD_VERIFY: "false"
